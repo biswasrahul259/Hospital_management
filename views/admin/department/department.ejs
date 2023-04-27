@@ -1,0 +1,100 @@
+<%- include("../partial/header") %>
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <%- include("../partial/sidebar") %>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <%- include("../partial/top-nav") %>
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Department Table</h1>
+          <a href="/addDepartment">
+            <button class="btn btn-primary btn-user btn-block">
+              Add Department
+            </button>
+          </a>
+        </div>
+        <div class="container">
+          <div class="row my-4">
+            <% if (message) { %>
+            <div
+              class="alert alert-dismissible fade show alert-<%= message.type %>"
+              role="alert"
+            >
+              <!-- <button
+                class="btn-close"
+                type="button"
+                data-bs-dismiss="alert"
+                aria-label="close"
+              ></button> -->
+              <strong><%= message.message %></strong>
+            </div>
+            <% } %>
+            <div class="table-responsive">
+              <% if (data != "") { %>
+              <table class="table table-bordered mb-5">
+                <thead>
+                  <tr class="table-dark" text="center my-3">
+                    <th>Image</th>
+                    <th>Department Name</th>
+                    <th>Department Description</th>
+                    <th >Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for(let row of data) {%>
+                  <tr class="align-middle">
+                    <td>
+                      <img
+                        src="<%= row.image %>"
+                        width="50"
+                        class="img-thumbnail"
+                      />
+                    </td>
+                    <td><%= row.department_name %></td>
+                    <td><%= row.department_Description %></td>
+
+                    <td>
+                      <a
+                        href="/editDepartment/<%=row._id%>"
+                        class="text-decoration-none"
+                      >
+                      <button class="btn">
+                        <i class="fa fa-edit"></i>
+                    </button>
+                      </a>
+                      <a
+                        href="/deleteDepartment/<%=row._id%>"
+                        class="text-decoration-none"
+                      >
+                      <button class="btn">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                      </a>
+                    </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+              <% } else { %>
+              <h1 class="text-center text-secondary mt-5">
+                No blogs found in the database
+              </h1>
+              <% } %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Begin Page Content -->
+    </div>
+    <!-- End of Main Content -->
+    <%- include("../partial/footer") %>
+  </div>
+</div>

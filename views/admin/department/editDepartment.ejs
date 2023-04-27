@@ -1,0 +1,41 @@
+<%- include("../partial/header") %>
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <%- include("../partial/sidebar") %>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <%- include("../partial/top-nav") %>
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="col-md-12">
+            <form action="/updateDepartment/<%-department._id %>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<%-department.id%>">
+                <label>Department Name:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="department_name" id="department_name" value="<%-department.department_name%>" placeholder="Enter department Name........">
+                </div>
+                <label>Department Description:</label>
+                <div class="form-group">
+                  <textarea type="text" class="form-control" name="department_Description" id="department_Description" rows="6" cols="100" value="<%-department.department_Description%>" placeholder="Enter department Description....."><%-department.department_Description%></textarea>
+                </div>
+                <label>Image:</label>
+                <div class="form-group">
+                    <input type="file" class="form-control" name="image" placeholder="Enter a image">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Update</button>
+            </form>
+        </div>
+          </div>
+      </div>
+      <!-- End Begin Page Content -->
+    </div>
+    <!-- End of Main Content -->
+   
+  </div>
+</div>

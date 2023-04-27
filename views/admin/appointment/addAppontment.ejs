@@ -1,0 +1,72 @@
+<%- include("../partial/header") %>
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <%- include("../partial/sidebar") %>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <%- include("../partial/top-nav") %>
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="col-md-12">
+            <form action="/createAppointment" method="post" enctype="multipart/form-data">
+                <label>Name:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="patientName"  placeholder="Enter Name........">
+                </div>
+                <label for="text">Mobile No.</label>
+                <input type="text" class="form-control" id="details" name="phone" />
+               </div>
+                <label>Booking Data</label>
+                <div class="form-group">
+                <input type="date" class="form-control" id="details" name="date" />
+                </div>
+                <label>Booking Time</label>
+                <div class="form-group">
+                <input type="time" class="form-control" id="details" name="time" />
+                </div>
+                <label>message</label>
+                <div class="form-group">
+                <input type="time" class="form-control" id="details" name="message" />
+                </div>
+                <label>Choose Department</label>
+                <div class="form-group">
+                <select name="department_name" class="form-control">
+                    <option disabled selected>Select Department</option>
+                    <% for(let data2 of displayData2){ %>
+                        <option value="<%= data2.id %>">
+                            <%= data2.department_name %>
+                        </option>
+                        <% } %>
+                </select>
+            </div>
+           <div>
+           <label>Choose Doctor</label>
+           <div class="form-group">
+           <select name="name" class="form-control">
+            <option disabled selected>Select Doctor</option>
+            <% for(let data1 of displayData1){ %>
+                <option value="<%= data1.id %>">
+                    <%= data1.name %>
+                </option>
+                <% } %>
+            </select>
+            </div>
+           </div>
+            
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
+            </form>
+        </div>
+          </div>
+      </div>
+      <!-- End Begin Page Content -->
+    </div>
+    <!-- End of Main Content -->
+   
+  </div>
+</div>

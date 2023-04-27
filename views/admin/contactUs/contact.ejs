@@ -1,0 +1,96 @@
+<%- include("../partial/header") %>
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <%- include("../partial/sidebar") %>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <%- include("../partial/top-nav") %>
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Contact us</h1>
+        </div>
+        <div class="container">
+          <div class="row my-4">
+            <% if (message) { %>
+            <div
+              class="alert alert-dismissible fade show alert-<%= message.type %>"
+              role="alert"
+            >
+              <!-- <button
+                class="btn-close"
+                type="button"
+                data-bs-dismiss="alert"
+                aria-label="close"
+              ></button> -->
+              <strong><%= message.message %></strong>
+            </div>
+            <% } %>
+          </div>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">All Contact</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <% if (contact != "") { %>
+                <table
+                  class="table table-bordered mb-5"
+                  width="100%"
+                  cellspacing="0"
+                >
+                  <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Topic</th>
+                        <th>Mobile No.</th>
+                        <th>Message</th>
+                        <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for(let row of contact) {%>
+                    <tr class="align-middle">
+                      <td><%= row.id.substring(20, 24) %></td>
+                      <td><%= row.name %></td>
+                      <td><%= row.email%></td>
+                      <td><%= row.topic%></td>
+                      <td><%= row.phone%></td>
+                      <td><%= row.message%></td>
+
+                      <td> <a
+                        href="/deleteCont/<%=row._id%>"
+                        class="text-decoration-none"
+                      >
+                      <button class="btn">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                      </a></td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+                <% } else { %>
+                <h1 class="text-center text-secondary mt-5">
+                  no Service found in the database
+                </h1>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Begin Page Content -->
+      </div>
+      <!-- End of Main Content -->
+      <%- include("../partial/footer") %>
+    </div>
+  </div>
+</div>

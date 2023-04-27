@@ -1,0 +1,112 @@
+<%- include("../partial/header") %>
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <%- include("../partial/sidebar") %>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <%- include("../partial/top-nav") %>
+    <!-- Main Content -->
+    <div id="content">
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <h1 class="h3 mb-0 text-gray-800">Doctor Table</h1>
+          <a href="/addDoctor">
+            <button class="btn btn-primary btn-user btn-block">
+              addDoctor
+            </button>
+          </a>
+        </div>
+        <div class="container">
+          <div class="row my-4">
+            <% if (message) { %>
+            <div
+              class="alert alert-dismissible fade show alert-<%= message.type %>"
+              role="alert"
+            >
+              <!-- <button
+                class="btn-close"
+                type="button"
+                data-bs-dismiss="alert"
+                aria-label="close"
+              ></button> -->
+              <strong><%= message.message %></strong>
+            </div>
+            <% } %>
+          </div>
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">All Doctors</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <% if (data != "") { %>
+                <table
+                  class="table table-bordered mb-5"
+                  width="100%"
+                  cellspacing="0"
+                >
+                  <thead>
+                    <tr>
+                      <th>Image</th>
+                      <th>Doctor Name</th>
+                      <th>Description</th>
+                      <th>Department Name</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% for(let row of data) {%>
+                    <tr class="align-middle">
+                      <td>
+                        <img
+                          src="<%= row.image %>"
+                          width="50"
+                          class="img-thumbnail"
+                        />
+                      </td>
+                      <td><%= row.name %></td>
+                      <td><%= row.description %></td>
+                      <td><%= row.department.department_name %></td>
+                      <td>
+                        <a
+                          href="/editDoctor/<%=row._id%>"
+                          class="text-decoration-none"
+                        >
+                        <button class="btn">
+                          <i class="fa fa-edit"></i>
+                      </button>
+                        </a>
+                        <a
+                          href="/deleteDoctor/<%=row._id%>"
+                          class="text-decoration-none"
+                        >
+                        <button class="btn">
+                          <i class="fa fa-trash"></i>
+                      </button>
+                        </a>
+                      </td>
+                    </tr>
+                    <% } %>
+                  </tbody>
+                </table>
+                <% } else { %>
+                <h1 class="text-center text-secondary mt-5">
+                  no Service found in the database
+                </h1>
+                <% } %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End Begin Page Content -->
+      </div>
+      <!-- End of Main Content -->
+      <%- include("../partial/footer") %>
+    </div>
+  </div>
+</div>

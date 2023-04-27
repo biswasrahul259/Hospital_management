@@ -1,0 +1,40 @@
+<%- include("../partial/header") %>
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+  <%- include("../partial/sidebar") %>
+
+  <!-- Content Wrapper -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <%- include("../partial/top-nav") %>
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="col-md-12">
+            <form action="/editDoctor/<%-data._id%>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id" value="<%-data.id%>">
+                <label>Doctor Name:</label>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name"  value="<%-data.name%>" placeholder="Enter doctor Name........">
+                </div>
+                <label>Doctor Description:</label>
+                <div class="form-group">
+                  <textarea type="text" name="description" rows="6" cols="100" value="<%-data.description%>" placeholder="Enter doctor Description....."><%-data.description%></textarea>
+                </div>
+                <label>Image:</label>
+                <div class="form-group">
+                    <input type="file" class="form-control" name="image" placeholder="Enter a image">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add</button>
+            </form>
+        </div>
+          </div>
+      </div>
+      <!-- End Begin Page Content -->
+    </div>
+    <!-- End of Main Content -->
+  </div>
+</div>
