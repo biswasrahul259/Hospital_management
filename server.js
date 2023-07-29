@@ -95,7 +95,7 @@ mongoose.set("strictQuery", true);
 const port = process.env.PORT || 2001;
 mongoose
   .connect(
-    "mongodb+srv://nodejs:203iv1Bxnx19oPOV@cluster0.zjbgce3.mongodb.net/doctor_project01",
+    "",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
